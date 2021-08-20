@@ -11,6 +11,12 @@ import reportWebVitals from "./reportWebVitals";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
+import Single from "./components/Single";
+import Search from "./components/Search";
+import Admin from "./Admin";
+import Create from "./components/admin/create";
+import Edit from "./components/admin/edit";
+import Delete from "./components/admin/delete";
 
 const routing = (
 	<Router>
@@ -18,9 +24,15 @@ const routing = (
 			<Header />
 			<Switch>
 				<Route exact path="/" component={App} />
+				<Route exact path="/admin/" component={Admin} />
+				<Route exact path="/admin/create" component={Create} />
+				<Route exact path="/admin/edit/:id" component={Edit} />
+				<Route exact path="/admin/delete/:id" component={Delete} />
+				<Route exact path="/post/:slug" component={Single} />
 				<Route exact path="/register" component={Register} />
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/logout" component={Logout} />
+				<Route path="/search" component={Search} />
 			</Switch>
 			<Footer />
 		</React.StrictMode>

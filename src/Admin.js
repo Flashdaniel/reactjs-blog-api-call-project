@@ -1,15 +1,15 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
-import Posts from "./components/Posts";
-import PostLoadingcomponent from "./components/PostLoading";
-import axiosInstance from "./axios";
+import React, { useEffect, useState } from "react";
 import "./App.css";
+import Posts from "./components/admin/posts";
+import PostLoadingComponent from "./components/PostLoading";
+import axiosInstance from "./axios";
 
-export default function App() {
-	const PostLoading = PostLoadingcomponent(Posts);
+function Admin() {
+	const PostLoading = PostLoadingComponent(Posts);
 	const [appState, setAppState] = useState({
-		loading: false,
+		loading: true,
 		posts: null,
 	});
 
@@ -28,3 +28,4 @@ export default function App() {
 		</div>
 	);
 }
+export default Admin;

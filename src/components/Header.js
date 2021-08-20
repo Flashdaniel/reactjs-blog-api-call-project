@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -9,6 +9,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Link from "@material-ui/core/Link";
 import { NavLink } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import SearchBar from "material-ui-search-bar";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
@@ -24,6 +26,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
 	const classes = useStyles();
+	const history = useHistory();
+	const [data, setAppData] = useState({ search: "" });
+
+	const goSearch = (e) => {
+		history.push({
+			pathname: "/search/",
+			search: "?search=" + data.search,
+		});
+		window.location.reload();
+	};
 
 	return (
 		<React.Fragment>
@@ -50,6 +62,11 @@ export default function Header() {
 							Blog
 						</Link>
 					</Typography>
+					<SearchBar
+						value={data.search}
+						onChange={(newValue) => setAppData({ search: newValue })}
+						onRequestSearch={() => goSearch(data.search)}
+					/>
 					<nav>
 						<Link
 							color="textPrimary"

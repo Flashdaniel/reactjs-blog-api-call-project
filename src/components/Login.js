@@ -57,7 +57,7 @@ export default function SignUp() {
 		console.log(formData);
 
 		axiosInstance
-			.post("token/", {
+			.post(`token/`, {
 				email: formData.email,
 				password: formData.password,
 			})
@@ -67,8 +67,8 @@ export default function SignUp() {
 				axiosInstance.defaults.headers["Authorization"] =
 					"JWT " + localStorage.getItem("access_token");
 				history.push("/");
-				console.log(res);
-				console.log(res.data);
+				//console.log(res);
+				//console.log(res.data);
 			});
 	};
 
